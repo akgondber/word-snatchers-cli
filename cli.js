@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import path from 'path';
+import { fileURLToPath } from 'url';
 import cac from "cac";
 import c from "ansi-colors";
 import log from "log-utils";
@@ -10,10 +12,12 @@ import {
 } from "./src/index.js";
 import Readline from "readline";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const cli = cac();
 
 cli.option("--file [file]", "Use some specified data file for questions data", {
-  default: "data/default.json",
+  default: path.join(__dirname, "data", "default.json"),
 });
 
 cli
@@ -90,6 +94,6 @@ Definition: ${c.gray(obj.definition)}`;
   });
 
 cli.help();
-cli.version("1.0.2");
+cli.version("1.0.3");
 
 cli.parse();
