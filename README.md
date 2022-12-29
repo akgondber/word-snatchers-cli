@@ -34,6 +34,12 @@ or
 $ words-game
 ```
 
+You can provide another json file that contains question items by passing an appropriate option:
+
+```shell
+$ words-game --file my/custom/questions.json
+```
+
 And here you go! Train your english and expand your vocabulary!
 
 ## License

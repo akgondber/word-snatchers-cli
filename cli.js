@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import cac from "cac";
 import c from "ansi-colors";
 import log from "log-utils";
@@ -88,6 +90,6 @@ Definition: ${c.gray(obj.definition)}`;
   });
 
 cli.help();
-cli.version("1.0.0");
+cli.version("1.0.2");
 
 cli.parse();

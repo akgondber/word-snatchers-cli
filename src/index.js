@@ -1,7 +1,9 @@
 import fs from "fs";
 import { assert, object, string, size } from "superstruct";
-import { shuffle } from "fast-shuffle";
+import fastShuffle from "fast-shuffle";
 import log from "log-utils";
+
+const { shuffle } = fastShuffle;
 
 const utils = {
   assert,
