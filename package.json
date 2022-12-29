@@ -1,0 +1,52 @@
+{
+  "name": "word-snatchers-cli",
+  "version": "1.0.0",
+  "description": "A console game which target is unscramble the letters to spell out a word fitting the given definition",
+  "main": "src/index.js",
+  "repository": "https://github.com/akgondber/word-snatchers-cli",
+  "author": "Rushan Alyautdinov <akgondber@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "wsc": "cli.js",
+    "words-snatchers-cli": "cli.js",
+    "words-snatchers": "cli.js",
+    "wrds": "cli.js",
+    "words-game": "cli.js"
+  },
+  "scripts": {
+    "play": "node cli.js",
+    "setup": "node scripts/pch.js",
+    "test": "uvu tests",
+    "prettify": "prettier --write .",
+    "check-files": "purposefile"
+  },
+  "keywords": [
+    "consolegame",
+    "cli",
+    "console",
+    "english",
+    "vocabulary",
+    "play",
+    "learn",
+    "word",
+    "words",
+    "unscramble"
+  ],
+  "dependencies": {
+    "ansi-colors": "^4.1.3",
+    "cac": "^6.7.14",
+    "fast-shuffle": "^5.0.2",
+    "log-utils": "^1.0.0",
+    "superstruct": "^0.16.4"
+  },
+  "devDependencies": {
+    "expect": "^29.3.1",
+    "post-command-hook": "^2.0.2",
+    "post-command-hook-install-packages-plugin": "^1.0.1",
+    "prettier": "^2.7.1",
+    "purposefile": "^1.2.0",
+    "sinon": "^14.0.1",
+    "uvu": "^0.5.6"
+  }
+}
