@@ -40,7 +40,19 @@ You can provide another json file that contains question items by passing an app
 $ words-game --file my/custom/questions.json
 ```
 
-And here you go! Train your english and expand your vocabulary!
+In order to run several game rounds you can use a `--suite` flag:
+
+```shell
+$ words-game --suite
+```
+
+There is a `--suite-folder` flag providing some folder to use another set of questions at once (rounds) from all json files located in specified folder:
+
+```shell
+$ words-game --suite --suite-folder "C:\baz"
+```
+
+Train your english and expand your vocabulary!
 
 ## License
 
