@@ -31,8 +31,6 @@ test("readDataFile", () => {
 test("validateQuestionObject", () => {
   const questionItem = { word: "a", definition: "Yn hcds sdcvd" };
   const sizeSpy = sinon.spy(utils, "size");
-  // const objFake = sinon.spy();
-  // const strFake = sinon.spy();
   sinon.replace(utils, "assert", spyFn);
   sinon.replace(utils, "object", spyFn);
   sinon.replace(utils, "size", sizeSpy);
@@ -66,7 +64,7 @@ test("successMsg", () => {
   sinon.replaceGetter(log, "success", () => "successIcon");
   sinon.replace(console, "log", consoleSpy);
 
-  const result = successMsg("content");
+  successMsg("content");
   expect(consoleSpy.getCall(0).args[0]).toEqual("successIcon content");
 });
 
@@ -76,7 +74,7 @@ test("errorMsg", () => {
   sinon.replaceGetter(log, "error", () => "errorIcon");
   sinon.replace(console, "log", consoleSpy);
 
-  const result = errorMsg("content");
+  errorMsg("content");
   expect(consoleSpy.getCall(0).args[0]).toEqual("errorIcon content");
 });
 
