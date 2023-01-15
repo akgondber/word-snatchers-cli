@@ -15,3 +15,5 @@ data/**/*.json               Json files with questions data
 scripts/**/*                 Scripts to automate some things
 tests/**/*.js                Test files
 tmp/**/*                     Temporarily files
+CHANGELOG.md                 Changelog file
+media/**/*                   Media files

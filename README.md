@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="media/logo.png" alt="Word-Snatchers-CLI" />
+</div>
+
 # word-snatchers-cli [![NPM version][npm-image]][npm-url]
 
 > A console game which target is unscramble the letters to spell out a word fitting the given definition.
@@ -50,6 +54,12 @@ There is a `--suite-folder` flag providing some folder to use another set of que
 
 ```shell
 $ words-game --suite --suite-folder "C:\baz"
+```
+
+Use plugins providing a `--plugin` argument:
+
+```shell
+$ words-game --plugin word-snatchers-cli-fruits-plugin
 ```
 
 Train your english and expand your vocabulary!

@@ -1,11 +1,11 @@
 {
   "name": "word-snatchers-cli",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A console game which target is unscramble the letters to spell out a word fitting the given definition",
   "main": "src/index.js",
   "repository": "https://github.com/akgondber/word-snatchers-cli",
   "author": "Rushan Alyautdinov <akgondber@gmail.com>",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "bin": {
     "wsc": "cli.js",
@@ -43,6 +43,7 @@
     "cac": "^6.7.14",
     "fast-shuffle": "^5.0.2",
     "filehound": "^1.17.6",
+    "import-global": "^0.1.0",
     "log-utils": "^1.0.0",
     "superstruct": "^0.16.4"
   },
