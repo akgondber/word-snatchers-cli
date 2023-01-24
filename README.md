@@ -62,6 +62,12 @@ Use plugins providing a `--plugin` argument:
 $ words-game --plugin word-snatchers-cli-fruits-plugin
 ```
 
+Specify how long to display each answer in summary when game was finished (in seconds, default value is 7):
+
+```shell
+$ words-game --answer-display-time=9
+```
+
 Train your english and expand your vocabulary!
 
 ## License

@@ -9,6 +9,7 @@ import {
   readDataFile,
   validateQuestionObject,
   utils,
+  isFn,
 } from "../src/index.js";
 
 const fakeFn = sinon.fake();
@@ -76,6 +77,15 @@ test("errorMsg", () => {
 
   errorMsg("content");
   expect(consoleSpy.getCall(0).args[0]).toEqual("errorIcon content");
+});
+
+test("isFn", () => {
+  expect(isFn(null)).toEqual(false);
+  expect(isFn(undefined)).toEqual(false);
+  expect(isFn("some string")).toEqual(false);
+  expect(isFn(102)).toEqual(false);
+
+  expect(isFn(() => {})).toEqual(true);
 });
 
 test.run();
