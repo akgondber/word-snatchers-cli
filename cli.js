@@ -23,6 +23,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const execP = promisify(exec);
 const cli = cac();
+let roundNumber;
 
 cli.option("--file [file]", "Use some specified data file for questions data", {
   default: path.join(__dirname, "data", "default.json"),
@@ -41,6 +42,11 @@ cli.option(
   }
 );
 
+cli.option(
+  "--suite-item [suiteItem]",
+  "Use specified suite by its name"
+);
+
 cli.option("--plugin <plugin>", "Use plugin as a source of questions");
 cli.option(
   "--answer-display-time",
@@ -49,6 +55,7 @@ cli.option(
     default: 7,
   }
 );
+cli.option("--round-number <roundNumber>", "Round number");
 
 let readline;
 
@@ -69,12 +76,22 @@ cli
       correctAnswerDisplayTime = 1;
     }
 
+    if (options.roundNumber) {
+      roundNumber = options.roundNumber;
+    }
+
     if (options.suite) {
-      const { suiteFolder } = options;
-      const files = await FileHound.create()
-        .paths(suiteFolder)
-        .ext("json")
-        .find();
+      const { suiteItem, suiteFolder } = options;
+      let files;
+
+      if (suiteItem) {
+        files = [path.join(suiteFolder, suiteItem)];
+      } else {
+        files = await FileHound.create()
+          .paths(suiteFolder)
+          .ext("json")
+          .find();
+      }
       await runGameRounds(files);
     } else if (options.plugin) {
       const invert = (p) => new Promise((res, rej) => p.then(rej, res));
@@ -202,7 +219,7 @@ Type your answer: `;
 
               console.log(`${askedQuestion}\n\n${answerPanel}`);
             },
-            passed === 1 ? 500 : passed * correctAnswerDisplayTime * 1000
+            passed === 1 ? 500 : passed * correctAnswerDisplayTime * 500
           );
         });
       });
@@ -221,13 +238,22 @@ const runFromPlugin = async (pluginInstance) => {
   const items = pluginInstance.build();
 
   if (items.every(Array.isArray)) {
-    items.map((itemList, i) => {
-      if ("items" in itemList[0]) {
-        populateState(itemList[0].items, i + 1);
+    if (roundNumber !== undefined) {
+      const curr = items[roundNumber - 1];
+      if ("items" in curr[0]) {
+        populateState(curr[0].items, 1);
       } else {
-        populateState(itemList, i + 1);
+        populateState(curr, 1);
       }
-    });
+    } else {
+      items.map((itemList, i) => {
+        if ("items" in itemList[0]) {
+          populateState(itemList[0].items, i + 1);
+        } else {
+          populateState(itemList, i + 1);
+        }
+      });
+    }
   } else {
     if ("items" in items[0]) {
       populateState(items[0].items, 1);
@@ -259,6 +285,6 @@ const runGameRounds = async (files) => {
 };
 
 cli.help();
-cli.version("2.1.1");
+cli.version("2.2.1");
 
 cli.parse();

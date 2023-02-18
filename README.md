@@ -70,6 +70,17 @@ $ words-game --answer-display-time=9
 
 Train your english and expand your vocabulary!
 
+## Plugins
+
+Some available plugins:
+
+* [`word-snatchers-cli-fruits-plugin`](https://github.com/akgondber/word-snatchers-cli-fruits-plugin)
+* [`word-snatchers-cli-berries-plugin`](https://github.com/akgondber/word-snatchers-cli-berries-plugin)
+* [`word-snatchers-cli-nuts-plugin`](https://github.com/akgondber/word-snatchers-cli-nuts-plugin)
+...
+
+Please see an [appropriate page](https://github.com/akgondber/word-snatchers-cli/blob/main/doc/plugins.md) for more details.
+
 ## License
 
 MIT © [Rushan Alyautdinov](https://github.com/akgondber)

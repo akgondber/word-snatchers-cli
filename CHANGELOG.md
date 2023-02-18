@@ -11,3 +11,10 @@ Plugin support
 ### Added
 
 `--answer-display-time` CLI option to specify how long to show a correct answer in summary when a game was finished.
+
+## [2.2.1]
+
+# Added
+
+`--suite-item` CLI option to use specified suite by its name (applicable when a `--suite` option is provided)
+`--round-number` CLI option to specify a round number (applicable when a `--plugin` option is provided)
