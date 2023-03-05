@@ -1,10 +1,10 @@
 import fs from "fs";
 import { optional, func, assert, object, string, size } from "superstruct";
-import fastShuffle from "fast-shuffle";
+import { shuffle } from "fast-shuffle";
 import log from "log-utils";
 import PluginBase from "./PluginBase.js";
 
-const { shuffle } = fastShuffle;
+// const { shuffle } = fastShuffle;
 
 const utils = {
   assert,
@@ -39,8 +39,15 @@ const readDataFile = (dataFile) => {
 
 const shuffleWord = (word) => {
   const chars = word.split("");
-  const shuffled = shuffle(chars);
-  return shuffled.join("");
+  let shuffled = shuffle(chars);
+  let result = shuffled.join("");
+
+  while (result === word) {
+    shuffled = shuffle(chars);
+    result = shuffled.join("");
+  }
+
+  return result;
 };
 
 const successMsg = (msg) => {

@@ -18,3 +18,10 @@ Plugin support
 
 `--suite-item` CLI option to use specified suite by its name (applicable when a `--suite` option is provided)
 `--round-number` CLI option to specify a round number (applicable when a `--plugin` option is provided)
+
+## [3.0.0]
+
+# Added
+
+- `--http` CLI option to use http resource as a source of questions
+- Possibility to not specify extension when a `--suite-item` option is being used
