@@ -4,6 +4,7 @@ import path from "path";
 import { exec } from "child_process";
 import { fileURLToPath } from "url";
 import cac from "cac";
+import axios from "axios";
 import c from "ansi-colors";
 import log from "log-utils";
 import FileHound from "filehound";
@@ -42,12 +43,11 @@ cli.option(
   }
 );
 
-cli.option(
-  "--suite-item [suiteItem]",
-  "Use specified suite by its name"
-);
+cli.option("--suite-item [suiteItem]", "Use specified suite by its name");
 
 cli.option("--plugin <plugin>", "Use plugin as a source of questions");
+
+cli.option("--http <http>", "Use http resource as a source of questions");
 cli.option(
   "--answer-display-time",
   "How long to display each answer in summary when game was finished (in seconds)",
@@ -85,12 +85,14 @@ cli
       let files;
 
       if (suiteItem) {
-        files = [path.join(suiteFolder, suiteItem)];
+        files = [
+          path.join(
+            suiteFolder,
+            suiteItem.endsWith(".json") ? suiteItem : `${suiteItem}.json`
+          ),
+        ];
       } else {
-        files = await FileHound.create()
-          .paths(suiteFolder)
-          .ext("json")
-          .find();
+        files = await FileHound.create().paths(suiteFolder).ext("json").find();
       }
       await runGameRounds(files);
     } else if (options.plugin) {
@@ -124,6 +126,8 @@ cli
           `It seems like a specified plugin \`${options.plugin}\` has not been installed globally.`
         );
       }
+    } else if (options.http) {
+      await runFromHttp(options.http);
     } else {
       await runGameRounds([options.file]);
     }
@@ -132,6 +136,18 @@ cli
 const state = [];
 
 const populateState = (obj) => {
+  try {
+    obj.map(validateQuestionObject);
+  } catch (err) {
+    errorMsg(
+      `An error occured while getting question from a source:\n   ${err.message}\n`
+    );
+    console.log(
+      `${log.info}. Please check that question objects in a source have required keys.`
+    );
+    process.exit(1);
+  }
+
   state.push({ items: obj });
 };
 const roundResults = [];
@@ -190,7 +206,7 @@ Type your answer: `;
           0
         );
 
-        curr.map((ele, questionIndex) => {
+        curr.map((questionItem, questionIndex) => {
           passed++;
           setTimeout(
             () => {
@@ -207,9 +223,9 @@ Type your answer: `;
 
               const askedQuestion = `${c.bgBlue.bold(
                 ` #${questionIndex + 1} `
-              )} Definition: ${c.gray(ele.definition)}`;
+              )} Definition: ${c.gray(questionItem.definition)}`;
 
-              const { word, answer, correct } = ele;
+              const { word, answer, correct } = questionItem;
               const status = correct ? log.success : log.error;
               let answerPanel = `${status} ${answer}`;
 
@@ -236,33 +252,33 @@ Type your answer: `;
 
 const runFromPlugin = async (pluginInstance) => {
   const items = pluginInstance.build();
+  await startGame(items);
+};
 
+const runFromHttp = async (resourceOrResources) => {
+  const resp = await axios.get(resourceOrResources);
+  await startGame(resp.data);
+};
+
+const startGame = async (items) => {
+  populateStateFromItems(items);
+  initReadline();
+  await askRecursive(state[0].items[0]);
+};
+
+const populateStateFromItems = (items) => {
   if (items.every(Array.isArray)) {
     if (roundNumber !== undefined) {
       const curr = items[roundNumber - 1];
-      if ("items" in curr[0]) {
-        populateState(curr[0].items, 1);
-      } else {
-        populateState(curr, 1);
-      }
+      populateNthRound(curr, 1);
     } else {
       items.map((itemList, i) => {
-        if ("items" in itemList[0]) {
-          populateState(itemList[0].items, i + 1);
-        } else {
-          populateState(itemList, i + 1);
-        }
+        populateNthRound(itemList, i + 1);
       });
     }
   } else {
-    if ("items" in items[0]) {
-      populateState(items[0].items, 1);
-    } else {
-      populateState(items, 1);
-    }
+    populateNthRound(items, 1);
   }
-  initReadline();
-  await askRecursive(state[0].items[0]);
 };
 
 const initReadline = () => {
@@ -284,7 +300,15 @@ const runGameRounds = async (files) => {
   await askRecursive(state[0].items[0]);
 };
 
+const populateNthRound = (items, n) => {
+  if ("items" in items[0]) {
+    populateState(items[0].items, n);
+  } else {
+    populateState(items, n);
+  }
+};
+
 cli.help();
-cli.version("2.2.1");
+cli.version("3.0.0");
 
 cli.parse();

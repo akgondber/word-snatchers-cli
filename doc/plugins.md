@@ -4,13 +4,15 @@
 
 The list of plugins:
 
-* [`word-snatchers-cli-fruits-plugin`](https://github.com/akgondber/word-snatchers-cli-fruits-plugin)
-* [`word-snatchers-cli-berries-plugin`](https://github.com/akgondber/word-snatchers-cli-berries-plugin)
-* [`word-snatchers-cli-nuts-plugin`](https://github.com/akgondber/word-snatchers-cli-nuts-plugin)
-* [`word-snatchers-cli-stationery-and-office-supplies-plugin`](https://github.com/akgondber/word-snatchers-cli-stationery-and-office-supplies-plugin)
+- [`word-snatchers-cli-fruits-plugin`](https://github.com/akgondber/word-snatchers-cli-fruits-plugin)
+- [`word-snatchers-cli-berries-plugin`](https://github.com/akgondber/word-snatchers-cli-berries-plugin)
+- [`word-snatchers-cli-nuts-plugin`](https://github.com/akgondber/word-snatchers-cli-nuts-plugin)
+- [`word-snatchers-cli-stationery-and-office-supplies-plugin`](https://github.com/akgondber/word-snatchers-cli-stationery-and-office-supplies-plugin)
 
 ## Creating plugins
+
 In order to create a plugin you have at least two options:
+
 - writing a plugin from scratch (see for example a [`word-snatchers-cli-fruits-plugin`](https://github.com/akgondber/word-snatchers-cli-fruits-plugin))
 - using a [yeoman generator](https://github.com/akgondber/generator-word-snatchers-cli-plugin) which allows you to build a plugin as easy as ABC - module structure and code will be generated
 

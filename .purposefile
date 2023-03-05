@@ -17,3 +17,4 @@ tests/**/*.js                Test files
 tmp/**/*                     Temporarily files
 CHANGELOG.md                 Changelog file
 media/**/*                   Media files
+doc/**/*.md                  Documentation files
