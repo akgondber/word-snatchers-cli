@@ -8,7 +8,7 @@ The list of plugins:
 - [`word-snatchers-cli-berries-plugin`](https://github.com/akgondber/word-snatchers-cli-berries-plugin)
 - [`word-snatchers-cli-nuts-plugin`](https://github.com/akgondber/word-snatchers-cli-nuts-plugin)
 - [`word-snatchers-cli-stationery-and-office-supplies-plugin`](https://github.com/akgondber/word-snatchers-cli-stationery-and-office-supplies-plugin)
-- [`word-snatchers-cli-is-he-living-or-is-he-dead-by-twain-words-plugin`]https://github.com/akgondber/word-snatchers-cli-is-he-living-or-is-he-dead-by-twain-words-plugin
+- [`word-snatchers-cli-is-he-living-or-is-he-dead-by-twain-words-plugin`](https://github.com/akgondber/word-snatchers-cli-is-he-living-or-is-he-dead-by-twain-words-plugin)
 
 ## Creating plugins
 

@@ -29,3 +29,7 @@ Plugin support
 ## [3.1.0]
 
 - Updated documentation
+
+## [3.1.1]
+
+- Updated documentation

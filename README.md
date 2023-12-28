@@ -107,7 +107,7 @@ Some available plugins:
 - [`word-snatchers-cli-fruits-plugin`](https://github.com/akgondber/word-snatchers-cli-fruits-plugin)
 - [`word-snatchers-cli-berries-plugin`](https://github.com/akgondber/word-snatchers-cli-berries-plugin)
 - [`word-snatchers-cli-nuts-plugin`](https://github.com/akgondber/word-snatchers-cli-nuts-plugin)
-- [`word-snatchers-cli-is-he-living-or-is-he-dead-by-twain-words-plugin`]https://github.com/akgondber/word-snatchers-cli-is-he-living-or-is-he-dead-by-twain-words-plugin
+- [`word-snatchers-cli-is-he-living-or-is-he-dead-by-twain-words-plugin`](https://github.com/akgondber/word-snatchers-cli-is-he-living-or-is-he-dead-by-twain-words-plugin)
 - [etc.](https://github.com/akgondber/word-snatchers-cli/blob/master/doc/plugins.md#list-of-plugins)
 
 Please see an [appropriate page](https://github.com/akgondber/word-snatchers-cli/blob/master/doc/plugins.md) for more details.
