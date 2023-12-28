@@ -25,3 +25,7 @@ Plugin support
 
 - `--http` CLI option to use http resource as a source of questions
 - Possibility to not specify extension when a `--suite-item` option is being used
+
+## [3.1.0]
+
+- Updated documentation
