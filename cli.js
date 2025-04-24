@@ -19,6 +19,7 @@ import {
   errorMsg,
   isFn,
 } from "./src/index.js";
+import { reverseTopicMappings } from "./constants.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -42,6 +43,8 @@ cli.option(
     default: path.join(__dirname, "data", "suite"),
   }
 );
+
+cli.option("--topic [topic]", "Use specific topic");
 
 cli.option("--suite-item [suiteItem]", "Use specified suite by its name");
 
@@ -92,7 +95,30 @@ cli
           ),
         ];
       } else {
-        files = await FileHound.create().paths(suiteFolder).ext("json").find();
+        let folderToLook = suiteFolder;
+        if (options.topic) {
+          if (options.topic in reverseTopicMappings) {
+            folderToLook = path.join(
+              folderToLook,
+              reverseTopicMappings[options.topic]
+            );
+          } else {
+            folderToLook = path.join(folderToLook, options.topic);
+          }
+        }
+        if (options.topic) {
+          files = await FileHound.create()
+            .paths(folderToLook)
+            .ext("json")
+            .find();
+          if (files.length > 0)
+            files = [files[Math.floor(Math.random() * files.length)]];
+        } else {
+          files = await FileHound.create()
+            .paths(folderToLook)
+            .ext("json")
+            .find();
+        }
       }
       await runGameRounds(files);
     } else if (options.plugin) {
@@ -235,6 +261,7 @@ Type your answer: `;
 
               console.log(`${askedQuestion}\n\n${answerPanel}`);
             },
+            // passed * 40 * 500
             passed === 1 ? 500 : passed * correctAnswerDisplayTime * 500
           );
         });

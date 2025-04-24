@@ -10,6 +10,8 @@ LICENSE                      License for package
 .git/**                      Internal git state & config
 node_modules/**/*            Dependencies installed by npm
 cli.js                       Source file for cli stuff
+constants.js                 Constant values holder
+utils.js                     Some sort of utilities
 src/**/*.js                  Source files
 data/**/*.json               Json files with questions data
 scripts/**/*                 Scripts to automate some things

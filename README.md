@@ -50,6 +50,12 @@ In order to run several game rounds you can use the `--suite` flag:
 $ words-game --suite
 ```
 
+You can use specific topic for suite, for example:
+
+```shell
+$ words-game --suite --topic bierce
+```
+
 There is the `--suite-folder` flag to provide a folder to use another set of questions at once (rounds) from all json files located in a specified folder:
 
 ```shell
