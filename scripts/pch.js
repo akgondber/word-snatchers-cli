@@ -9,7 +9,9 @@ postCommandHook.setRunOnce(true);
 postCommandHook.use(
   new InstallPackagesPlugin(["purposefile"], { saveDev: true })
 );
-postCommandHook.use(new InstallPackagesPlugin(["expect"], { saveDev: true }));
+postCommandHook.use(
+  new InstallPackagesPluggitin(["expect"], { saveDev: true })
+);
 
 (async () => {
   await postCommandHook.run();

@@ -38,6 +38,12 @@ or
 $ words-game
 ```
 
+## Demo
+
+![demo](media/demo.gif)
+
+## Notes
+
 You can provide another json file that contains question items by passing an appropriate option:
 
 ```shell

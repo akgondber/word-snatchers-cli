@@ -336,6 +336,6 @@ const populateNthRound = (items, n) => {
 };
 
 cli.help();
-cli.version("3.0.0");
+cli.version("4.1.0");
 
 cli.parse();
