@@ -7,11 +7,13 @@ const postCommandHook = new PostCommandHook({
 });
 postCommandHook.setRunOnce(true);
 postCommandHook.use(
-  new InstallPackagesPlugin(["purposefile"], { saveDev: true })
+  new InstallPackagesPlugin(["purposefile"], { saveDev: true }),
 );
+postCommandHook.use(new InstallPackagesPlugin(["expect"], { saveDev: true }));
 postCommandHook.use(
-  new InstallPackagesPluggitin(["expect"], { saveDev: true })
+  new InstallPackagesPlugin(["@clack/prompts"], { saveDev: true }),
 );
+postCommandHook.use(new InstallPackagesPlugin(["fs-extra"], { saveDev: true }));
 
 (async () => {
   await postCommandHook.run();

@@ -1,6 +1,6 @@
 {
   "name": "word-snatchers-cli",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "A console game which target is unscramble the letters to spell out a word fitting the given definition",
   "main": "src/index.js",
   "repository": "https://github.com/akgondber/word-snatchers-cli",
@@ -23,7 +23,8 @@
     "test": "uvu tests",
     "prettify": "prettier --write .",
     "check-files": "purposefile",
-    "pretcheck": "prettier . --check"
+    "pretcheck": "prettier . --check",
+    "addround": "node scripts/add-round.js"
   },
   "keywords": [
     "consolegame",
@@ -44,21 +45,23 @@
   ],
   "dependencies": {
     "ansi-colors": "^4.1.3",
-    "axios": "^1.3.3",
+    "axios": "^1.11.0",
     "cac": "^6.7.14",
-    "fast-shuffle": "^5.0.2",
+    "fast-shuffle": "^6.1.1",
     "filehound": "^1.17.6",
     "log-utils": "^1.0.0",
-    "mlly": "^1.1.0",
-    "superstruct": "^0.16.4"
+    "mlly": "^1.7.4",
+    "superstruct": "^2.0.2"
   },
   "devDependencies": {
-    "expect": "^29.7.0",
+    "@clack/prompts": "^0.11.0",
+    "expect": "^30.0.5",
+    "fs-extra": "^11.3.1",
     "post-command-hook": "^2.0.2",
-    "post-command-hook-install-packages-plugin": "^1.0.1",
-    "prettier": "^2.7.1",
+    "post-command-hook-install-packages-plugin": "^1.1.1",
+    "prettier": "^3.6.2",
     "purposefile": "^1.2.0",
-    "sinon": "^17.0.1",
+    "sinon": "^21.0.0",
     "uvu": "^0.5.6"
   }
 }

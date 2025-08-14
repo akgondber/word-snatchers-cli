@@ -33,7 +33,7 @@ cli.option("--file [file]", "Use some specified data file for questions data", {
 
 cli.option(
   "--suite [suite]",
-  "Use specified suite (several game rounds from all json files inside the directory) to run questions from"
+  "Use specified suite (several game rounds from all json files inside the directory) to run questions from",
 );
 
 cli.option(
@@ -41,7 +41,7 @@ cli.option(
   "Use specified suite (several game rounds from all json files inside the directory) to run questions from",
   {
     default: path.join(__dirname, "data", "suite"),
-  }
+  },
 );
 
 cli.option("--topic [topic]", "Use specific topic");
@@ -56,7 +56,7 @@ cli.option(
   "How long to display each answer in summary when game was finished (in seconds)",
   {
     default: 7,
-  }
+  },
 );
 cli.option("--round-number <roundNumber>", "Round number");
 
@@ -91,7 +91,7 @@ cli
         files = [
           path.join(
             suiteFolder,
-            suiteItem.endsWith(".json") ? suiteItem : `${suiteItem}.json`
+            suiteItem.endsWith(".json") ? suiteItem : `${suiteItem}.json`,
           ),
         ];
       } else {
@@ -100,7 +100,7 @@ cli
           if (options.topic in reverseTopicMappings) {
             folderToLook = path.join(
               folderToLook,
-              reverseTopicMappings[options.topic]
+              reverseTopicMappings[options.topic],
             );
           } else {
             folderToLook = path.join(folderToLook, options.topic);
@@ -132,7 +132,7 @@ cli
             resolve(
               await moduleResolve(options.plugin, {
                 url: globalDirLookupResult.stdout,
-              })
+              }),
             );
           } catch (err) {
             reject(err);
@@ -149,7 +149,7 @@ cli
         runFromPlugin(pluginInstance);
       } catch (err) {
         errorMsg(
-          `It seems like a specified plugin \`${options.plugin}\` has not been installed globally.`
+          `It seems like a specified plugin \`${options.plugin}\` has not been installed globally.`,
         );
       }
     } else if (options.http) {
@@ -166,10 +166,10 @@ const populateState = (obj) => {
     obj.map(validateQuestionObject);
   } catch (err) {
     errorMsg(
-      `An error occured while getting question from a source:\n   ${err.message}\n`
+      `An error occured while getting question from a source:\n   ${err.message}\n`,
     );
     console.log(
-      `${log.info}. Please check that question objects in a source have required keys.`
+      `${log.info}. Please check that question objects in a source have required keys.`,
     );
     process.exit(1);
   }
@@ -229,7 +229,7 @@ Type your answer: `;
       roundResults.map((curr, index) => {
         const correctAnswerCount = curr.reduce(
           (acc, obj) => (obj.correct ? acc + 1 : acc),
-          0
+          0,
         );
 
         curr.map((questionItem, questionIndex) => {
@@ -242,13 +242,13 @@ Type your answer: `;
                 summaryMsg += `Round #${index + 1} results.\n`;
               }
               summaryMsg += `Summary: ${c.bold(
-                correctAnswerCount
+                correctAnswerCount,
               )} correct answer(s) out of ${c.bold(curr.length)}.\n\n`;
 
               console.log(summaryMsg);
 
               const askedQuestion = `${c.bgBlue.bold(
-                ` #${questionIndex + 1} `
+                ` #${questionIndex + 1} `,
               )} Definition: ${c.gray(questionItem.definition)}`;
 
               const { word, answer, correct } = questionItem;
@@ -262,7 +262,7 @@ Type your answer: `;
               console.log(`${askedQuestion}\n\n${answerPanel}`);
             },
             // passed * 40 * 500
-            passed === 1 ? 500 : passed * correctAnswerDisplayTime * 500
+            passed === 1 ? 500 : passed * correctAnswerDisplayTime * 500,
           );
         });
       });

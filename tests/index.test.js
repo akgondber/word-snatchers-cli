@@ -43,7 +43,7 @@ test("validateQuestionObject", () => {
     expect.objectContaining({
       definition: expect.anything(),
       word: expect.anything(),
-    })
+    }),
   );
 
   expect(sizeSpy.callCount).toEqual(2);
@@ -52,10 +52,14 @@ test("validateQuestionObject", () => {
       expect.objectContaining({ type: "string" }),
       5,
       250,
-    ])
+    ]),
   );
   expect(sizeSpy.getCall(1).args).toEqual(
-    expect.arrayContaining([expect.objectContaining({ type: "string" }), 2, 30])
+    expect.arrayContaining([
+      expect.objectContaining({ type: "string" }),
+      2,
+      30,
+    ]),
   );
 });
 
