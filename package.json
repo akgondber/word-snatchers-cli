@@ -1,6 +1,6 @@
 {
   "name": "word-snatchers-cli",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "A console game which target is unscramble the letters to spell out a word fitting the given definition",
   "main": "src/index.js",
   "repository": "https://github.com/akgondber/word-snatchers-cli",
@@ -45,7 +45,7 @@
   ],
   "dependencies": {
     "ansi-colors": "^4.1.3",
-    "axios": "^1.11.0",
+    "axios": "^1.20.0",
     "cac": "^6.7.14",
     "fast-shuffle": "^6.1.1",
     "filehound": "^1.17.6",

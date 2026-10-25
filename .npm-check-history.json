@@ -1,0 +1,13 @@
+{
+  "2026-10-26 01:41:11": [
+    {
+      "name": "axios",
+      "kindOfDependencyKey": "dependencies",
+      "semverValue": "^1.11.0",
+      "message": "Your local install is out of date. https://axios-http.com",
+      "command": "npm install axios@1.20.0 --save",
+      "operation": "update",
+      "info": "npm install axios@1.20.0 --save to go from 1.11.0 to 1.20.0"
+    }
+  ]
+}
